@@ -15,9 +15,10 @@ app.use(limiter);
 
 app.use("/bookingService",async(req,res,next)=>{
     try{
-        const response=await axios.get("http://localhost:3001/api/v1/isAuthenticated",{
+    const token=req.headers['x-access-token'];
+        const response=await axios.get("http://localhost:3001/AuthService/api/v1/isAuthenticated",{
         headers:{
-            'x-access-token':"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiaGluYXZAZ21haWwuY29tIiwiaWQiOjgsImlhdCI6MTcwNjI2ODMwOSwiZXhwIjoxNzA2MzU0NzA5fQ.Hh8aUwpaJPrnvUc-B1hDV6KlQ5NGiVB2bigPwSFUiH4"
+            'x-access-token':token
         }
     
     })
