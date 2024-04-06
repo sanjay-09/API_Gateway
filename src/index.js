@@ -28,8 +28,15 @@ app.use("/bookingService",async(req,res,next)=>{
     
     })
    
-    console.log(response.data);
+    if(response.data.data.status==true){
     next();
+    }
+    else{
+        return res.status(500).json({
+            message:"Invalid Token"
+
+        })
+    }
 
     }
     catch(err){
